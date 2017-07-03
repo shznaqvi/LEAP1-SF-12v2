@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_section_ending"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="72dp"
     tools:context="edu.aku.hassannaqvi.leap1sf_12v2.activities.EndingActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:scrollbars="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl"
             android:orientation="vertical">
 
             <TextView
@@ -24,23 +21,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorPrimary"
-                android:text="@string/dcstatus"
+                android:text="@string/iStatus"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
             <RadioGroup
-                android:id="@+id/dcstatus"
+                android:id="@+id/iStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/dcstatus01"
+                    android:id="@+id/status01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/complete" />
 
                 <RadioButton
-                    android:id="@+id/dcstatus02"
+                    android:id="@+id/status02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/incomplete" />
@@ -53,8 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_weight="1"
-                android:onClick="endInterview"
-                android:text="@string/end_interview"
+                android:onClick="endForm"
+                android:text="@string/endForm"
                 android:textColor="#ff1e1e" />
 
 
@@ -63,4 +60,3 @@
 
     </ScrollView>
 
-</RelativeLayout>

@@ -172,8 +172,8 @@ public class MainActivity extends Activity {
 
     public void openForm(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
-          /*  Intent oF = new Intent(MainActivity.this, SectionAActivity.class);
-            startActivity(oF);*/
+            Intent oF = new Intent(MainActivity.this, SectionAActivity.class);
+            startActivity(oF);
         } else {
 
             builder = new AlertDialog.Builder(MainActivity.this);
@@ -191,8 +191,8 @@ public class MainActivity extends Activity {
                         editor.putString("tagName", m_Text);
                         editor.commit();
 
-                        /*Intent oF = new Intent(MainActivity.this, SectionAActivity.class);
-                        startActivity(oF);*/
+                        Intent oF = new Intent(MainActivity.this, SectionAActivity.class);
+                        startActivity(oF);
                     }
                 }
             });
