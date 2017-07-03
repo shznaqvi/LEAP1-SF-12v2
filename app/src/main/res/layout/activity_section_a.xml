@@ -608,7 +608,6 @@
             android:layout_marginTop="8dp"
             android:text="@string/sf07" />
 
-
         <RadioGroup
             android:id="@+id/sf07"
             android:layout_width="match_parent"
@@ -651,7 +650,6 @@
 
         </RadioGroup>
 
-
         <LinearLayout
             android:id="@+id/fldGrpbtn"
             android:layout_width="match_parent"
@@ -684,7 +682,6 @@
                 android:textStyle="bold" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 
