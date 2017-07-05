@@ -5,6 +5,7 @@ package edu.aku.hassannaqvi.leap1sf_12v2.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -12,6 +13,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -185,19 +187,15 @@ public class SectionAActivity extends Activity {
 
                 finish();
 
-                Intent endSec = new Intent(this, EndingActivity.class);
-                startActivity(endSec);
 
-/*
-                startActivity(new Intent(this, SectionBActivity.class));
-*/
+                startActivity(new Intent(this, MainActivity.class));
+
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
-
 
     @OnClick(R.id.btnEnd)
     void onBtnEndClick() {
@@ -212,8 +210,7 @@ public class SectionAActivity extends Activity {
             if (UpdateDB()) {
                 finish();
                 Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
-                Intent endSec = new Intent(this, EndingActivity.class);
-                endSec.putExtra("complete", false);
+                Intent endSec = new Intent(this, MainActivity.class);
                 startActivity(endSec);
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -262,13 +259,27 @@ public class SectionAActivity extends Activity {
 //        AppMain.fc.setChildId(cra03.getText().toString());
 
        // AppMain.fc.setTagId(sharedPref.getString("tagName", ""));
+
+       */
         JSONObject sa = new JSONObject();
+        sa.put("sf01", sf01a.isChecked() ? "1" : sf01b.isChecked() ? "2" : sf01c.isChecked() ? "3" : sf01d.isChecked() ? "4" : sf01e.isChecked() ? "5" : "0");
+        sa.put("sf02a", sf02aa.isChecked() ? "1" : sf02ab.isChecked() ? "2" : sf02ac.isChecked() ? "3" : "0");
+        sa.put("sf02b", sf02ba.isChecked() ? "1" : sf02bb.isChecked() ? "2" : sf02bc.isChecked() ? "3" : "0");
+        sa.put("sf03a", sf03aa.isChecked() ? "1" : sf03ab.isChecked() ? "2" : sf03ac.isChecked() ? "3" : sf03ad.isChecked() ? "4" : sf03ae.isChecked() ? "5" : "0");
+        sa.put("sf03b", sf03ba.isChecked() ? "1" : sf03bb.isChecked() ? "2" : sf03bc.isChecked() ? "3" : sf03bd.isChecked() ? "4" : sf03be.isChecked() ? "5" : "0");
+        sa.put("sf04a", sf04aa.isChecked() ? "1" : sf04ab.isChecked() ? "2" : sf04ac.isChecked() ? "3" : sf04ad.isChecked() ? "4" : sf04ae.isChecked() ? "5" : "0");
+        sa.put("sf04b", sf04ba.isChecked() ? "1" : sf04bb.isChecked() ? "2" : sf04bc.isChecked() ? "3" : sf04bd.isChecked() ? "4" : sf04be.isChecked() ? "5" : "0");
+        sa.put("sf05", sf05a.isChecked() ? "1" : sf05b.isChecked() ? "2" : sf05c.isChecked() ? "3" : sf05d.isChecked() ? "4" : sf05e.isChecked() ? "5" : "0");
+        sa.put("sf06a", sf06aa.isChecked() ? "1" : sf06ab.isChecked() ? "2" : sf06ac.isChecked() ? "3" : sf06ad.isChecked() ? "4" : sf06ae.isChecked() ? "5" : "0");
+        sa.put("sf06b", sf06ba.isChecked() ? "1" : sf06bb.isChecked() ? "2" : sf06bc.isChecked() ? "3" : sf06bd.isChecked() ? "4" : sf06be.isChecked() ? "5" : "0");
+        sa.put("sf06c", sf06ca.isChecked() ? "1" : sf06cb.isChecked() ? "2" : sf06cc.isChecked() ? "3" : sf06cd.isChecked() ? "4" : sf06ce.isChecked() ? "5" : "0");
+        sa.put("sf07", sf07a.isChecked() ? "1" : sf07b.isChecked() ? "2" : sf07c.isChecked() ? "3" : sf07d.isChecked() ? "4" : sf07e.isChecked() ? "5" : "0");
 
 
-        setGPS();
+        // setGPS();
 
-        AppMain.fc.setsA(String.valueOf(sa));
-        */
+        //    AppMain.fc.setsA(String.valueOf(sa));
+
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -311,6 +322,113 @@ public class SectionAActivity extends Activity {
 
     public boolean ValidateForm() {
 
+        if (sf01.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf01), Toast.LENGTH_SHORT).show();
+            sf01e.setError("this data is required");
+            Log.d(TAG, "sf01 : not selected ");
+            return false;
+        } else {
+            sf01e.setError(null);
+        }
+
+        if (sf02a.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf02a), Toast.LENGTH_SHORT).show();
+            sf02ac.setError("this data is required");
+            Log.d(TAG, "sf02a : not selected ");
+            return false;
+        } else {
+            sf02ac.setError(null);
+        }
+
+        if (sf02b.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf02b), Toast.LENGTH_SHORT).show();
+            sf02bc.setError("this data is required");
+            Log.d(TAG, "sf02b : not selected ");
+            return false;
+        } else {
+            sf02bc.setError(null);
+        }
+
+        if (sf03a.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf03a), Toast.LENGTH_SHORT).show();
+            sf03ae.setError("this data is required");
+            Log.d(TAG, "sf03a : not selected ");
+            return false;
+        } else {
+            sf03ae.setError(null);
+        }
+
+        if (sf03b.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf03b), Toast.LENGTH_SHORT).show();
+            sf03be.setError("this data is required");
+            Log.d(TAG, "sf03b : not selected ");
+            return false;
+        } else {
+            sf03be.setError(null);
+        }
+
+        if (sf04a.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf04a), Toast.LENGTH_SHORT).show();
+            sf04ae.setError("this data is required");
+            Log.d(TAG, "sf04a : not selected ");
+            return false;
+        } else {
+            sf04ae.setError(null);
+        }
+
+        if (sf04b.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf04b), Toast.LENGTH_SHORT).show();
+            sf04be.setError("this data is required");
+            Log.d(TAG, "sf04b : not selected ");
+            return false;
+        } else {
+            sf04be.setError(null);
+        }
+
+        if (sf05.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf05), Toast.LENGTH_SHORT).show();
+            sf05e.setError("this data is required");
+            Log.d(TAG, "sf05 : not selected ");
+            return false;
+        } else {
+            sf05e.setError(null);
+        }
+
+        if (sf06a.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf06a), Toast.LENGTH_SHORT).show();
+            sf06ae.setError("this data is required");
+            Log.d(TAG, "sf06a : not selected ");
+            return false;
+        } else {
+            sf06ae.setError(null);
+        }
+
+        if (sf06b.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf06b), Toast.LENGTH_SHORT).show();
+            sf06be.setError("this data is required");
+            Log.d(TAG, "sf06b : not selected ");
+            return false;
+        } else {
+            sf06be.setError(null);
+        }
+
+        if (sf06c.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf06c), Toast.LENGTH_SHORT).show();
+            sf06ce.setError("this data is required");
+            Log.d(TAG, "sf06c : not selected ");
+            return false;
+        } else {
+            sf06ce.setError(null);
+        }
+
+        if (sf07.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf07), Toast.LENGTH_SHORT).show();
+            sf07e.setError("this data is required");
+            Log.d(TAG, "sf07 : not selected ");
+            return false;
+        } else {
+            sf07e.setError(null);
+        }
 
         return true;
     }

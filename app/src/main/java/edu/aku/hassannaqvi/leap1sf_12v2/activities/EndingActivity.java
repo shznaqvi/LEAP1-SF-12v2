@@ -23,6 +23,7 @@ public class EndingActivity extends Activity {
 
     private static final String TAG = EndingActivity.class.getSimpleName();
 
+
     @BindView(R.id.activity_section_ending)
     ScrollView activitySectionEnding;
     @BindView(R.id.iStatus)
@@ -90,19 +91,21 @@ public class EndingActivity extends Activity {
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
+
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateEnding();
+      /*  int updcount = db.updateEnding();
 
-        if (updcount == 1) {
+        if (updcount > 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }
-
+            //}
+        }*/
+        return true;
     }
 
     private boolean formValidation() {
@@ -111,7 +114,7 @@ public class EndingActivity extends Activity {
         if (iStatus.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Not Selected): " + getString(R.string.iStatus), Toast.LENGTH_LONG).show();
             status02.setError("Please Select One");    // Set Error on last radio button
-            Log.i(TAG, "dcstatus: This data is Required!");
+            Log.i(TAG, "status: This data is Required!");
             return false;
         } else {
             status02.setError(null);
