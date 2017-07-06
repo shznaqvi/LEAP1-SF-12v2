@@ -38,11 +38,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:background="@color/colorPrimaryAlpha"
+            android:background="@color/pink_100"
             android:text="@string/sfsub1"
             android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="25sp"
+            android:textColor="@color/black"
+            android:textSize="22sp"
             android:textStyle="bold"
             tools:typeface="serif" />
 
@@ -56,13 +56,6 @@
             android:id="@+id/sf01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <RadioButton
-                android:id="@+id/sf01a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:text="@string/sf01a" />
 
             <RadioButton
                 android:id="@+id/sf01b"
@@ -91,6 +84,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:text="@string/sf01e" />
+
+            <RadioButton
+                android:id="@+id/sf01a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/sf01a" />
 
         </RadioGroup>
 

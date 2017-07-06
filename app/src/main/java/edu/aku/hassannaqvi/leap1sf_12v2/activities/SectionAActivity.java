@@ -322,6 +322,7 @@ public class SectionAActivity extends Activity {
 
     public boolean ValidateForm() {
 
+        // =================== sf01 ====================
         if (sf01.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf01), Toast.LENGTH_SHORT).show();
             sf01e.setError("this data is required");
@@ -331,6 +332,7 @@ public class SectionAActivity extends Activity {
             sf01e.setError(null);
         }
 
+        // =================== sf02a ====================
         if (sf02a.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf02a), Toast.LENGTH_SHORT).show();
             sf02ac.setError("this data is required");
@@ -340,6 +342,7 @@ public class SectionAActivity extends Activity {
             sf02ac.setError(null);
         }
 
+        // =================== sf02b ====================
         if (sf02b.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf02b), Toast.LENGTH_SHORT).show();
             sf02bc.setError("this data is required");
@@ -349,6 +352,7 @@ public class SectionAActivity extends Activity {
             sf02bc.setError(null);
         }
 
+        // =================== sf03a ====================
         if (sf03a.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf03a), Toast.LENGTH_SHORT).show();
             sf03ae.setError("this data is required");
@@ -358,6 +362,7 @@ public class SectionAActivity extends Activity {
             sf03ae.setError(null);
         }
 
+        // =================== sf03b ====================
         if (sf03b.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf03b), Toast.LENGTH_SHORT).show();
             sf03be.setError("this data is required");
@@ -367,6 +372,7 @@ public class SectionAActivity extends Activity {
             sf03be.setError(null);
         }
 
+        // =================== sf04a ====================
         if (sf04a.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf04a), Toast.LENGTH_SHORT).show();
             sf04ae.setError("this data is required");
@@ -376,6 +382,8 @@ public class SectionAActivity extends Activity {
             sf04ae.setError(null);
         }
 
+
+        // =================== sf04b ====================
         if (sf04b.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf04b), Toast.LENGTH_SHORT).show();
             sf04be.setError("this data is required");
@@ -385,6 +393,7 @@ public class SectionAActivity extends Activity {
             sf04be.setError(null);
         }
 
+        // =================== sf05 ====================
         if (sf05.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf05), Toast.LENGTH_SHORT).show();
             sf05e.setError("this data is required");
@@ -394,6 +403,7 @@ public class SectionAActivity extends Activity {
             sf05e.setError(null);
         }
 
+        // =================== sf06a ====================
         if (sf06a.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf06a), Toast.LENGTH_SHORT).show();
             sf06ae.setError("this data is required");
@@ -403,6 +413,7 @@ public class SectionAActivity extends Activity {
             sf06ae.setError(null);
         }
 
+        // =================== sf06b ====================
         if (sf06b.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf06b), Toast.LENGTH_SHORT).show();
             sf06be.setError("this data is required");
@@ -412,6 +423,7 @@ public class SectionAActivity extends Activity {
             sf06be.setError(null);
         }
 
+        // =================== sf06c ====================
         if (sf06c.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf06c), Toast.LENGTH_SHORT).show();
             sf06ce.setError("this data is required");
@@ -421,6 +433,7 @@ public class SectionAActivity extends Activity {
             sf06ce.setError(null);
         }
 
+        // =================== sf07 ====================
         if (sf07.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf07), Toast.LENGTH_SHORT).show();
             sf07e.setError("this data is required");
