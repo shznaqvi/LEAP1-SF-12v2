@@ -14,6 +14,7 @@
     <string name="sectionA">ELIGIBILITY DETAILS  اہلیت کی تفصیلات</string>
     <string name="sfheading">SF-12v2™  ہیلتھ سروے اسکورنگ</string>
     <string name="sfsub1">اس سروے میں آپ کی صحت کے بارے میں آپ کے خیالات جاننے گے ہر سوال کا جواب دینے کے لیے دئے گئے جواب کا انتخاب کریں اگر آپکو سوال کے جواب کے بارے میں یقین نہیں ہے تو براہ مہربانی بہترین جواب کا انتخاب کریں جو آپ سے ہوسکے</string>
+    <string name="studyID">Mother’s Study ID ماں کی اسٹیڈی آئی ڈی</string>
     <string name="sf01">اپنی صحت کے بارے میں آپ کی رائے  </string>
     <string name="sf01a">عمدہ </string>
     <string name="sf01b">بہت اچھا </string>

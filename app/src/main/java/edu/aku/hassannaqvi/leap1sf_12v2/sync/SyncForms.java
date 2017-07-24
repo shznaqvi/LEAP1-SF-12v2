@@ -63,7 +63,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         try {
-            String url = MainApp._HOST_URL + FormsContract.FormsTable._URL;
+            String url = MainApp._HOST_URL + FormsContract.FormsTable.URI;
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
@@ -87,18 +87,21 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
 
                 URL url = new URL(request);
                 connection = (HttpURLConnection) url.openConnection();
-                connection.setDoOutput(true);
-                connection.setDoInput(true);
-                connection.setInstanceFollowRedirects(false);
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("Content-Type", "application/json");
-                connection.setRequestProperty("charset", "utf-8");
-                connection.setUseCaches(false);
                 connection.connect();
-
                 int HttpResult = connection.getResponseCode();
                 if (HttpResult == HttpURLConnection.HTTP_OK) {
                     JSONArray jsonSync = new JSONArray();
+                    connection = (HttpURLConnection) url.openConnection();
+
+                    connection.setDoOutput(true);
+                    connection.setDoInput(true);
+                    connection.setInstanceFollowRedirects(false);
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Content-Type", "application/json");
+                    connection.setRequestProperty("charset", "utf-8");
+                    connection.setUseCaches(false);
+                    connection.connect();
+
 
                     DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
@@ -158,14 +161,16 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
             json = new JSONArray(result);
             DatabaseHelper db = new DatabaseHelper(mContext);
             for (int i = 0; i < json.length(); i++) {
+
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
-                    db.updateSyncedForms(jsonObject.getString("id"));
+                    db.updateForms(jsonObject.getString("id"));
                     sSynced++;
                 } else {
-                    sSyncedError += "\nError: " + jsonObject.getString("message").toString();
+                    sSyncedError += jsonObject.getString("message").toString() + "\n";
                 }
             }
+
             Toast.makeText(mContext, sSynced + " Forms synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(sSynced + " Forms synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
@@ -178,8 +183,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
             pd.setMessage(result);
             pd.setTitle("Forms Sync Failed");
             pd.show();
-
-
         }
+
     }
 }
