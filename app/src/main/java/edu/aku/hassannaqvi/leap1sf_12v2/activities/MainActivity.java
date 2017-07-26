@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
     TextView lblheader;
     @BindView(R.id.recordSummary)
     TextView recordSummary;
+
     @BindView(R.id.syncDevice)
     Button syncDevice;
     SharedPreferences sharedPref;
@@ -320,6 +321,4 @@ public class MainActivity extends Activity {
             return null;
         }
     }
-
-
 }

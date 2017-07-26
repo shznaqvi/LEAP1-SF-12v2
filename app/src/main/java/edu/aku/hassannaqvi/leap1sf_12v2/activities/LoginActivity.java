@@ -31,8 +31,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -110,18 +108,28 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+//        Get data from wrapper app
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            String user = b.getString("userName_from_wrapper");
+            MainApp.username = user;
+            finish();
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
+
+
         try {
             long installedOn = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.leap1sf_12v2", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.leap_aqol_8d", 0)
                     .lastUpdateTime;
             Integer versionCode = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.leap1sf_12v2", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.leap_aqol_8d", 0)
                     .versionCode;
             String versionName = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.leap1sf_12v2", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.leap_aqol_8d", 0)
                     .versionName;
             txtinstalldate.setText("Ver. " + versionName + "." + String.valueOf(versionCode) + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(installedOn)) + " )");
         } catch (PackageManager.NameNotFoundException e) {
@@ -176,7 +184,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+/*
         // attaching data adapter to spinner
         spUC.setAdapter(dataAdapter);
         spUC.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
@@ -196,7 +204,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
 
 //        DB backup
@@ -496,23 +504,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 DatabaseHelper db = new DatabaseHelper(LoginActivity.this);
                 if ((mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu")) || db.Login(mEmail, mPassword)
                         || (mEmail.equals("test1234") && mPassword.equals("test1234"))) {
-                    MainApp.userName = mEmail;
+                    MainApp.username = mEmail;
                     MainApp.admin = mEmail.contains("@");
 
                     finish();
                     Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(iLogin);
-
-                 /*  if (!MainApp.regionDss.equals("") || (mEmail.equals("dmu@aku") && mPassword.equals("aku?dmu"))) {
-                        finish();
-
-                        Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(iLogin);
-
-                        Toast.makeText(LoginActivity.this, "You are assigned to " + MainApp.regionDss + " Block", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "You are not assigned to any block", Toast.LENGTH_SHORT).show();
-                    }*/
 
                 } else {
                     mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -598,4 +595,3 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 
 }
-

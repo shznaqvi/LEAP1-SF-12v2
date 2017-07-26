@@ -52,7 +52,7 @@ public class GetUsers extends AsyncTask<String, String, String> {
         StringBuilder result = new StringBuilder();
 
         try {
-            URL url = new URL(MainApp._HOST_URL + singleUser._URI);
+            URL url = new URL(MainApp.PROJECT_URI + singleUser._URI);
             urlConnection = (HttpURLConnection) url.openConnection();
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
