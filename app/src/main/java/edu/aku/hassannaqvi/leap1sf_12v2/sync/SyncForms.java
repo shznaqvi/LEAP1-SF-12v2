@@ -59,16 +59,17 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
 
     }
 
-
     @Override
     protected String doInBackground(Void... params) {
+
         try {
-            String url = MainApp._HOST_URL + FormsContract.FormsTable.URI;
+            String url = MainApp.PROJECT_URI + FormsContract.FormsTable.URI;
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
             return "Unable to upload data. Server may be down.";
         }
+
     }
 
     private String downloadUrl(String myurl) throws IOException {
@@ -151,7 +152,6 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
         return line;
     }
 
-    @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         int sSynced = 0;
@@ -184,6 +184,6 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
             pd.setTitle("Forms Sync Failed");
             pd.show();
         }
-
     }
+
 }

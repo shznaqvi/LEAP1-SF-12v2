@@ -181,14 +181,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/sf02ba" />
+                android:text="@string/sf02bb" />
 
             <RadioButton
                 android:id="@+id/sf02bc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/sf02ba" />
+                android:text="@string/sf02bc" />
 
         </RadioGroup>
 

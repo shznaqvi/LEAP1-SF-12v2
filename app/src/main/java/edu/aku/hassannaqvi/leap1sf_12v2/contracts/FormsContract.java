@@ -30,6 +30,7 @@ public class FormsContract {
     private String gpsDT = "";
     private String gpsAcc = "";
     private String deviceID = "";
+    private String gpsTime = "";
     private String devicetagID = "";
     private String synced = "";
     private String synced_date = "";
@@ -38,19 +39,22 @@ public class FormsContract {
     }
 
 
+
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
         this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
         this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
-        //   this.ISNEW = jsonObject.getString(FormsTable.COLUMN_IS_NEW);
-        //  this.DSSID = jsonObject.getString(FormsTable.COLUMN_DSSID);
+//        this.ISNEW = jsonObject.getString(FormsTable.COLUMN_IS_NEW);
+        //   this.DSSID = jsonObject.getString(FormsTable.COLUMN_DSSID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
         this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
-        this.studyID = jsonObject.getString(FormsTable.COLUMN_STUDYID);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
+        this.studyID = jsonObject.getString(FormsTable.COLUMN_STUDYID);
+
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
         this.gpsDT = jsonObject.getString(FormsTable.COLUMN_GPSDATE);
+//        this.gpsTime = jsonObject.getString(FormsTable.COLUMN_GPSTIME);
         this.gpsAcc = jsonObject.getString(FormsTable.COLUMN_GPSACC);
         this.deviceID = jsonObject.getString(FormsTable.COLUMN_DEVICEID);
         this.devicetagID = jsonObject.getString(FormsTable.COLUMN_DEVICETAGID);
@@ -64,16 +68,17 @@ public class FormsContract {
     public FormsContract Hydrate(Cursor cursor) {
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
-        //  this.ISNEW = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_IS_NEW));
-        // this.DSSID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DSSID));
+//        this.ISNEW = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_IS_NEW));
+        //  this.DSSID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DSSID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
         this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.studyID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_STUDYID));
         this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
+        this.studyID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_STUDYID));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
         this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDATE));
+//        this.gpsTime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSTIME));
         this.gpsAcc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSACC));
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
@@ -91,16 +96,17 @@ public class FormsContract {
 
         json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
-        //   json.put(FormsTable.COLUMN_IS_NEW, this.ISNEW == null ? JSONObject.NULL : this.ISNEW);
-        //      json.put(FormsTable.COLUMN_DSSID, this.DSSID == null ? JSONObject.NULL : this.DSSID);
+//        json.put(FormsTable.COLUMN_IS_NEW, this.ISNEW == null ? JSONObject.NULL : this.ISNEW);
+        // json.put(FormsTable.COLUMN_DSSID, this.DSSID == null ? JSONObject.NULL : this.DSSID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FormsTable.COLUMN_USERNAME, this.username == null ? JSONObject.NULL : this.username);
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
-        json.put(FormsTable.COLUMN_STUDYID, this.studyID.equals("") ? JSONObject.NULL : new JSONObject(this.studyID));
         json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
+        json.put(FormsTable.COLUMN_STUDYID, this.studyID == null ? JSONObject.NULL : this.studyID);
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
         json.put(FormsTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);
+//        json.put(FormsTable.COLUMN_GPSTIME, this.gpsTime == null ? JSONObject.NULL : this.gpsTime);
         json.put(FormsTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);
         json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
@@ -121,38 +127,22 @@ public class FormsContract {
         this._ID = _ID;
     }
 
-    public String get_UID() {
-        return _UID;
-    }
-
-    public void set_UID(String _UID) {
-        this._UID = _UID;
-    }
-
-    public String getStudyID() {
-        return studyID;
-    }
-
-    public void setStudyID(String studyID) {
-        this.studyID = studyID;
-    }
-
  /*   public String getISNEW() {
         return ISNEW;
     }
 
     public void setISNEW(String ISNEW) {
         this.ISNEW = ISNEW;
-    }
-
-    public String getDSSID() {
-        return DSSID;
-    }
-
-    public void setDSSID(String DSSID) {
-        this.DSSID = DSSID;
     }*/
 
+    /* public String getDSSID() {
+         return DSSID;
+     }
+
+     public void setDSSID(String DSSID) {
+         this.DSSID = DSSID;
+     }
+ */
     public String getFormDate() {
         return formDate;
     }
@@ -177,7 +167,6 @@ public class FormsContract {
         this.istatus = istatus;
     }
 
-
     public String getsA() {
         return sA;
     }
@@ -186,6 +175,21 @@ public class FormsContract {
         this.sA = sA;
     }
 
+    public String get_UID() {
+        return _UID;
+    }
+
+    public void set_UID(String _UID) {
+        this._UID = _UID;
+    }
+
+    public String getStudyID() {
+        return studyID;
+    }
+
+    public void setStudyID(String studyID) {
+        this.studyID = studyID;
+    }
 
     public String getGpsLat() {
         return gpsLat;
@@ -210,6 +214,14 @@ public class FormsContract {
     public void setGpsDT(String gpsDT) {
         this.gpsDT = gpsDT;
     }
+
+   /* public String getGpsTime() {
+        return gpsTime;
+    }
+
+    public void setGpsTime(String gpsTime) {
+        this.gpsTime = gpsTime;
+    }*/
 
     public String getGpsAcc() {
         return gpsAcc;
@@ -254,26 +266,28 @@ public class FormsContract {
     public static abstract class FormsTable implements BaseColumns {
 
         public static final String TABLE_NAME = "forms";
-        public static final String URI = "syncsfforms.php";
+        public static final String URI = "/syncsfforms.php";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectname";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN_UID = "_uid";
-        /*  public static final String COLUMN_IS_NEW = "isnew";
-          public static final String COLUMN_DSSID = "dssid";*/
+        //  public static final String COLUMN_IS_NEW = "isnew";
+        //        public static final String COLUMN_DSSID = "dssid";
         public static final String COLUMN_FORMDATE = "formdate";
-        public static final String COLUMN_USERNAME = "user";
+        public static final String COLUMN_USERNAME = "username";
         public static final String COLUMN_ISTATUS = "istatus";
-        public static final String COLUMN_STUDYID = "studyid";
         public static final String COLUMN_SA = "sa";
+        public static final String COLUMN_STUDYID = "studyid";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";
         public static final String COLUMN_GPSDATE = "gpsdate";
+        //        public static final String COLUMN_GPSTIME = "gpstime";
         public static final String COLUMN_GPSACC = "gpsacc";
         public static final String COLUMN_DEVICEID = "deviceid";
         public static final String COLUMN_DEVICETAGID = "tagid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
+
 
     }
 }

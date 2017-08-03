@@ -10,11 +10,9 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 
 import java.util.List;
-import java.util.Map;
 
 import edu.aku.hassannaqvi.leap1sf_12v2.contracts.FormsContract;
 
@@ -26,7 +24,7 @@ public class MainApp extends Application {
 
     public static final String _IP = "43.245.131.159"; // Test PHP server
     public static final Integer _PORT = 8080; // Port - with colon (:)
-    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/leap1/api/";
+    public static final String PROJECT_URI = "http://" + MainApp._IP + ":" + MainApp._PORT + "/leap1/api";
 
     /*
         public static final String _IP = "43.245.131.159"; // Test server
@@ -52,18 +50,12 @@ public class MainApp extends Application {
     public static String deviceId;
 
     public static Boolean admin = false;
-    public static String interviewerCode;
-    public static int loginFieldArea = -1;
-    public static String child_name = "TEST";
+    public static int mna3 = -1;
+    public static String mnb1 = "TEST";
+    public static int chCount = 0;
+    public static int chTotal = 0;
+    public static boolean scanned = false;
     public static FormsContract fc;
-    public static String userName = "0000";
-    public static String areaCode;
-
-   /* public static int mm = 1;
-    public static int totalChild = 0;
-    public static int memFlag = 0;
-    public static List<Integer> memClicked;*/
-
     public static SharedPreferences sharedPref;
     public static String enrollDate;
 
@@ -204,7 +196,6 @@ public class MainApp extends Application {
             Location bestLocation = new Location("storedProvider");
             bestLocation.setAccuracy(Float.parseFloat(sharedPref.getString("Accuracy", "0")));
             bestLocation.setTime(Long.parseLong(sharedPref.getString(dt, "0")));
-//                bestLocation.setTime(Long.parseLong(dt));
             bestLocation.setLatitude(Float.parseFloat(sharedPref.getString("Latitude", "0")));
             bestLocation.setLongitude(Float.parseFloat(sharedPref.getString("Longitude", "0")));
 
@@ -213,9 +204,7 @@ public class MainApp extends Application {
                 editor.putString("Latitude", String.valueOf(location.getLatitude()));
                 editor.putString("Accuracy", String.valueOf(location.getAccuracy()));
                 editor.putString("Time", String.valueOf(location.getTime()));
-                //   editor.putString("Time", DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(String.valueOf(location.getTime()))).toString());
-
-//                String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(String.valueOf(location.getTime()))).toString();
+                String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(String.valueOf(location.getTime()))).toString();
 //                Toast.makeText(getApplicationContext(),
 //                        "GPS Commit! LAT: " + String.valueOf(location.getLongitude()) +
 //                                " LNG: " + String.valueOf(location.getLatitude()) +
@@ -224,12 +213,6 @@ public class MainApp extends Application {
 //                        Toast.LENGTH_SHORT).show();
 
                 editor.apply();
-            }
-
-
-            Map<String, ?> allEntries = sharedPref.getAll();
-            for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-                Log.d("Map", entry.getKey() + ": " + entry.getValue().toString());
             }
         }
 
