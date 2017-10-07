@@ -325,6 +325,23 @@ public class SectionAActivity extends Activity {
 
     public boolean ValidateForm() {
 
+        if (studyID.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.studyID), Toast.LENGTH_SHORT).show();
+            studyID.setError("This data is required");
+            Log.d(TAG, " studyID :empty ");
+            return false;
+        } else {
+            studyID.setError(null);
+        }
+        if (Double.valueOf(studyID.getText().toString()) == 0) {
+            Toast.makeText(this, "ERROR(invalid): " + getString(R.string.studyID), Toast.LENGTH_SHORT).show();
+            studyID.setError("Invalid: Data cannot be Zero");
+            Log.i(TAG, "studyID: Invalid data is 0");
+            return false;
+        } else {
+            studyID.setError(null);
+        }
+
         // =================== sf01 ====================
         if (sf01.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR (empty)" + getString(R.string.sf01), Toast.LENGTH_SHORT).show();
